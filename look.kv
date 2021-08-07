@@ -1,0 +1,110 @@
+WindowManager:
+    MainWindow:
+    FoodWindow:
+    AuthorWindow:
+<MainWindow>:
+    name: "main"
+    Pulser:
+        canvas:
+            Color:
+                rgba: self.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    GridLayout:
+        cols: 1
+
+        Label:
+            text: "Welcome to FoodApp"
+            font_size: 100
+            font_name: "Pacifico"
+            color: .3,.4,.5,1
+            size_hint: 0.5, 2
+
+        Button:
+            text: "draw your dinner"
+            font_name: "Pacifico"
+            size_hint: 0.5, 0.5
+            on_release:
+                app.root.current = "food"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "reset a dish"
+            font_name: "Pacifico"
+            size_hint: 0.5, .5
+            on_press:
+                app.btn_help()
+        
+        Button:
+            text: "author"
+            font_name: "Pacifico"
+            size_hint: 0.5, 0.5
+            on_release:
+                app.root.current = "author"
+                root.manager.transition.direction = "left"
+            
+        Button:
+            text: "exit"
+            font_name: "Pacifico"
+            size_hint: 0.5, 0.5
+            on_press: app.quit()
+
+<FoodWindow>:
+    name: "food"
+    GridLayout:
+        cols: 1
+
+        Image:
+            source: app.link
+            size: self.texture_size
+        Button:
+            text: "display recipe"
+            font_name: "Pacifico"
+            size_hint: 0.25, 0.25
+            on_press:
+                app.btn()
+            
+        Button:
+            text: "back to main menu"
+            font_name: "Pacifico"
+            size_hint: 0.25, 0.25
+            on_release: 
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+<AuthorWindow>:
+    name: "author"
+    Pulser:
+        canvas:
+            Color:
+                rgba: self.bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    GridLayout:
+        cols: 1
+        
+        Label:
+            text: "Maciej Wojtkowiak"
+            font_size: 100
+            font_name: "Pacifico"
+            color: .3,.4,.5,1
+            size_hint: 0.5, 2
+        Button:
+            text: "back to main menu"
+            font_name: "Pacifico"
+            size_hint: 0.5, 0.5
+            on_release: 
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+<P1>:
+    Label:
+        text: app.recipe
+        font_name: "aba"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2,"top":0.6}
+        Image:
+            source: app.link
+            size: 300,300
+            pos: 200, 1500

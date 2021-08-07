@@ -1,0 +1,3 @@
+title=FoodApp
+author=MaciejWojt
+orientation=portrait
